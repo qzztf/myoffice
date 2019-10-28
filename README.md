@@ -2,7 +2,9 @@
 
 一个方便使用的office工具库。许多项目都试图在代码中去控制格式，复杂不说，效果也很难达到用户的需求。我们使用程序来操作word，更多的是想动态生成内容而已，试图用第三方程序来控制格式，个人感觉有点儿舍本逐末。因此本项目只将动态的内容填充到制作好的模板中去，格式由产品经经理等专业的人士去控制，力图达到效果与操作方便的中点。
 
-## 工作方式
+## 使用方式
+
+### word模板填充
 
 1. 在word中编辑好要格式，将需要动态填入的部分使用模板引擎表达式来表示。该项目默认使用`freemarker`，因此可以使用`freemarker`的语法。不仅仅是简单的变量替换，而是完整的表达式。如：if，循环。如：
 
@@ -28,3 +30,23 @@
    ![输出结果](README/1572255030373.png)
 
    可以看到，使用方式非常的简单，并且保留了word中的格式。
+
+### Excel读取
+
+1. 定义每行的模型类，使用`@CellField`来绑定列标。
+
+   ```java
+   public class Model {
+       // 该注解用来绑定到列标
+       @CellField(labelCol = "A")
+       private String name;
+   }
+   ```
+
+2. 调用 api 即可获取到返回结果
+
+   ```java
+   List<Model> collect = new SimpleExtractor<Model>() {}.getData("e:/x5/业务追踪表1557384063836.xlsx").stream().peek(System.out::println).collect(Collectors.toList());
+   ```
+
+   
