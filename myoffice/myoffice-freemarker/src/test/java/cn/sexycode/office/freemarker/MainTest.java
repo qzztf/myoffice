@@ -21,11 +21,7 @@ import java.util.HashMap;
 public class MainTest {
     @Test
     public void test() throws Exception {
-        //        new WordUtil().replaceText(new XWPFDocument(new FileInputStream("e:/x5/鼎和房屋抵押合同履约保证保险投保单.docx")));
 
-        /*Config cfg = new Config(Config.VERSION_2_3_28);
-        cfg.setDirectoryForTemplateLoading(new File("e:/x5"));
-        Template template =cfg.getTemplate("鼎和房屋抵押合同履约保证保险投保单.docx");*/
         HashMap<String, Object> dataModel = new HashMap<>();
         dataModel.put("city", 11111);
         dataModel.put("text", 11111);
